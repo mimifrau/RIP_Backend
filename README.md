@@ -22,6 +22,6 @@
 -   [Завершение интерфейса пользователя в React (лаб 7)](https://github.com/mimifrau/RIP_Frontend/tree/Auth)
 -   [Завершение интерфейса модератора в React (лаб 8)](https://github.com/mimifrau/RIP_Frontend/tree/Moderator)
 
-## [Нативное приложение]((https://github.com/mimifrau/RIP_Native)
+## [Нативное приложение](https://github.com/mimifrau/RIP_Native)
 
 -   [Tauri Android](https://github.com/mimifrau/RIP_Native/tree/Tauri-Android)
