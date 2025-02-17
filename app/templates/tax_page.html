@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="container">
+        <h3  class="text-center">Черновое списание</h3>
+         <div class="form-group">
+            <label class="form-label">Дата</label>
+            {% if tax.date %}
+                <input placeholder="Введите дату" disabled type="text" class="form-control" style="width: 250px" value="{{ tax.date }}">
+            {% else %}
+                <input placeholder="Введите дату" disabled type="text" class="form-control" style="width: 250px">
+            {% endif %}
+        </div>
+        <form method="post" action="{% url 'delete_tax' tax.id %}">
+            {% csrf_token %}
+                <button class="btn btn-danger delete-draft-tax-btn" type="submit">
+                    Удалить
+                </button>
+            </a>
+        </form>
+            {% if tax.get_codes|length > 0 %}
+                <h4 class="text-center">Коды</h4>
+                <div class="cards-wrapper d-flex flex-column">
+                    {% for code in tax.get_codes %}
+                        <div class="card w-100 mb5">
+                             <div class="row g-0">
+                                <div class="col-md-6 d-flex justify-center">
+                                    <img src="{{ code.get_image }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ code.name }}</h5>
+                                        <p class="card-text">Расшифровка: {{ code.decryption }}</p>
+                                        <div class="form-group">
+                                            <label class="form-label">Сумма вычета</label>
+                                            <input disabled type="text" class="form-control" style="width: 250px" value="{{ code.value }}">
+                                        </div>
+                                        <a href="/codes/{{ code.id }}/" class="btn btn-primary" style="width: 100px">
+                                            Открыть
+                                        </a>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                 <h4 class="text-center">Коды еще не добавлены</h4>
+            {% endif %}
+        </div>
+    </main>
+{% endblock content %}
